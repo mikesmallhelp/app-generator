@@ -1,3 +1,5 @@
 import os
+import parameters_reader
 
-os.system("ng new mika-app --routing=false --style=scss")
+appName = parameters_reader.readParameters()
+os.system('ng new ' + appName + ' --routing=false --style=scss')
