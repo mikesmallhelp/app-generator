@@ -1,5 +1,7 @@
 import os
 import app_data
 
-appName = app_data.readAppData()
-os.system('ng new ' + appName + ' --routing=false --style=scss')
+appData = app_data.readAppData()
+os.system('ng new ' + appData.appName + ' --routing=false --style=scss')
+os.chdir(appData.appName)
+os.system('ng generate component ' + appData.cardName)
