@@ -17,6 +17,7 @@ def generateAppComponentHtml(appData):
 appData = app_data.readAppData()
 os.system('ng new ' + appData.appName + ' --routing=false --style=scss')
 os.chdir(appData.appName)
+os.system('ng add @angular/material --defaults=true')
 os.system('ng generate component ' + appData.cardName)
 generateAppComponentHtml(appData)
 os.system('ng serve')
