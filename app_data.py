@@ -1,4 +1,4 @@
-def readParameters():
+def readAppData():
 
    try:
       f = open("mika.gen", encoding = 'utf-8')

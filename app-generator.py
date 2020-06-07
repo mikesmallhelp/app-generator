@@ -1,5 +1,5 @@
 import os
-import parameters_reader
+import app_data
 
-appName = parameters_reader.readParameters()
+appName = app_data.readAppData()
 os.system('ng new ' + appName + ' --routing=false --style=scss')
