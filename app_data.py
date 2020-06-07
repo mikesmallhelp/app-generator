@@ -4,6 +4,7 @@ class AppData:
    fieldNames = []
    
 def readAppData():
+   print('Reading app data...')
    appData = AppData()
 
    try:
@@ -15,9 +16,14 @@ def readAppData():
             appData.appName = line.strip()
          elif lineNumber == 2:
             appData.cardName = line.strip()
+         elif lineNumber == 3:
+            appData.fieldNames.append(line.strip())
+         elif lineNumber == 4:
+            appData.fieldNames.append(line.strip())
          lineNumber += 1
 
    finally:
       f.close()
 
+   print('Reading app data ended')
    return appData
