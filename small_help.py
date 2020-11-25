@@ -1,13 +1,13 @@
 import os
-import app_data
+import application_configuration_reader
 
-def generateAppComponentHtml(appData):
+def generateApplicationComponentHtml(applicationConfiguration):
    print('Generating app component html...')
 
    try:
       f = open('src/app/app.component.html', 'w')
-      f.write('<H1>'+ appData.appName  +'</H1>' + '\n')
-      f.write('<app-' + appData.cardName + '></app-' + appData.cardName + '>'); 
+      f.write('<H1>'+ applicationConfiguration.applicationName  +'</H1>' + '\n')
+      f.write('<app-' + applicationConfiguration.cardName + '></app-' + applicationConfiguration.cardName + '>'); 
 
    finally:
       f.close()
@@ -18,8 +18,8 @@ def addInputs(cardName, fieldNames):
    print('Add inputs for card ' + cardName  + '...')
 
    try:
-      f = open('src/app/' + appData.cardName +  '/' + appData.cardName  + '.component.html', 'w')   
-      f.write('<H2>'+ appData.cardName  +'</H2>' + '\n')
+      f = open('src/app/' + applicationConfiguration.cardName +  '/' + applicationConfiguration.cardName  + '.component.html', 'w')   
+      f.write('<H2>'+ applicationConfiguration.cardName  +'</H2>' + '\n')
       f.write('<div><input placeholder = "' + fieldNames[0]  + '"></div>\n')
       f.write('<div><input placeholder = "' + fieldNames[1]  + '"></div>\n')
 
@@ -30,14 +30,14 @@ def addInputs(cardName, fieldNames):
 
 print('Generating app...')
 
-appData = app_data.readAppData()
-os.system('ng new ' + appData.appName + ' --routing=false --style=scss --strict=true')
-os.chdir(appData.appName)
+applicationConfiguration = application_configuration_reader.readApplicationConfiguration()
+os.system('ng new ' + applicationConfiguration.applicationName + ' --routing=false --style=scss --strict=true')
+os.chdir(applicationConfiguration.applicationName)
 os.system('ng add @angular/material --defaults=true')
-os.system('ng generate component ' + appData.cardName)
-generateAppComponentHtml(appData)
-addInputs(appData.cardName, appData.fieldNames)
+os.system('ng generate component ' + applicationConfiguration.cardName)
+generateApplicationComponentHtml(applicationConfiguration)
+addInputs(applicationConfiguration.cardName, applicationConfiguration.fieldNames)
 os.system('ng serve')
 
-print('Generating app ended')
+print('Generating application ended')
 print('The application is running in the url localhost:4200')
