@@ -1,6 +1,6 @@
 # app-generator
 
-python3 app-generator.py
+python3 app-generator/small_help.py
 
 Miten jatkaa
 

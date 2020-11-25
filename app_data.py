@@ -8,7 +8,7 @@ def readAppData():
    appData = AppData()
 
    try:
-      f = open("mika.gen", encoding = 'utf-8')
+      f = open("small_help.txt", encoding = 'utf-8')
       
       lineNumber = 1
       for line in f:

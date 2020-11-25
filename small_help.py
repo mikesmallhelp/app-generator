@@ -31,7 +31,7 @@ def addInputs(cardName, fieldNames):
 print('Generating app...')
 
 appData = app_data.readAppData()
-os.system('ng new ' + appData.appName + ' --routing=false --style=scss')
+os.system('ng new ' + appData.appName + ' --routing=false --style=scss --strict=true')
 os.chdir(appData.appName)
 os.system('ng add @angular/material --defaults=true')
 os.system('ng generate component ' + appData.cardName)
