@@ -1,32 +1,6 @@
 import os
 import application_configuration_reader
-
-def generateApplicationComponentHtml(applicationConfiguration):
-   print('Generating app component html...')
-
-   try:
-      f = open('src/app/app.component.html', 'w')
-      f.write('<H1>'+ applicationConfiguration.applicationName  +'</H1>' + '\n')
-      f.write('<app-' + applicationConfiguration.cardName + '></app-' + applicationConfiguration.cardName + '>'); 
-
-   finally:
-      f.close()
-
-   print('Generating app component html ended')
-
-def addInputs(cardName, fieldNames):
-   print('Add inputs for card ' + cardName  + '...')
-
-   try:
-      f = open('src/app/' + applicationConfiguration.cardName +  '/' + applicationConfiguration.cardName  + '.component.html', 'w')   
-      f.write('<H2>'+ applicationConfiguration.cardName  +'</H2>' + '\n')
-      f.write('<div><input placeholder = "' + fieldNames[0]  + '"></div>\n')
-      f.write('<div><input placeholder = "' + fieldNames[1]  + '"></div>\n')
-
-   finally:
-      f.close()
-
-   print('Add inputs for card ' + cardName  + ' ended')
+import application_generator
 
 print('Generating app...')
 
@@ -35,8 +9,8 @@ os.system('ng new ' + applicationConfiguration.applicationName + ' --routing=fal
 os.chdir(applicationConfiguration.applicationName)
 os.system('ng add @angular/material --defaults=true')
 os.system('ng generate component ' + applicationConfiguration.cardName)
-generateApplicationComponentHtml(applicationConfiguration)
-addInputs(applicationConfiguration.cardName, applicationConfiguration.fieldNames)
+application_generator.generateApplicationComponentHtml(applicationConfiguration)
+application_generator.addInputs(applicationConfiguration)
 os.system('ng serve')
 
 print('Generating application ended')
